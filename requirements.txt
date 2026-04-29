@@ -1,0 +1,50 @@
+# =============================================================================
+# requirements_full.txt
+# Single-Cell Cell Type Prediction — Full Project Dependencies
+# Covers: Preprocessing, LR, Deep Learning, Clustering, AND scGPT Embeddings
+#
+# USAGE:
+#   conda create -n scrna_full python=3.10 -y
+#   conda activate scrna_full
+#   pip install -r requirements_full.txt
+#   pip uninstall -y torchtext torchdata   # CRITICAL: removes broken DLLs
+#
+# WHY PYTHON 3.10?
+#   - Best compatibility across scanpy, scGPT, and PyTorch
+#   - Python 3.11 works for most things but can cause DLL issues with scGPT
+#   - Python 3.12+ drops support for some scGPT dependencies
+# =============================================================================
+
+# ── PyTorch (install FIRST — other packages depend on it) ──
+# scGPT officially recommends torch 2.1.2
+# On Windows without NVIDIA GPU, this installs CPU-only automatically
+torch==2.1.2
+torchvision==0.16.2
+
+# ── Core single-cell analysis ──
+scanpy>=1.9,<1.11
+anndata>=0.10,<0.12
+umap-learn>=0.5
+leidenalg>=0.9
+
+# ── Data science essentials ──
+numpy>=1.23,<2.0
+pandas>=1.5,<3.0
+scipy>=1.10
+h5py>=3.8
+
+# ── Machine learning ──
+scikit-learn>=1.2
+
+# ── Visualization ──
+matplotlib>=3.5
+seaborn>=0.12
+
+# ── scGPT foundation model ──
+scgpt>=0.2.1
+gdown>=4.7
+
+# ── scGPT transitive dependencies that need pinning ──
+# scgpt pulls in transformers, datasets, etc.
+transformers>=4.28
+datasets>=2.3

@@ -1,0 +1,52 @@
+Features (expression): (2638, 1838)
+Features (PCA): (2638, 50)
+Cell types (8): ['B cells', 'CD14+ Monocytes', 'CD4 T cells', 'CD8 T cells', 'Dendritic cells', 'FCGR3A+ Monocytes', 'Megakaryocytes', 'NK cells']
+
+==================================================
+Random Forest (HVG expression): 0.9186
+Random Forest (PCA 50 components): 0.9432
+==================================================
+
+--- Classification Report (HVG expression) ---
+                   precision    recall  f1-score   support
+
+          B cells       1.00      1.00      1.00        69
+  CD14+ Monocytes       0.89      0.99      0.94        96
+      CD4 T cells       0.91      0.98      0.94       229
+      CD8 T cells       0.84      0.65      0.73        63
+  Dendritic cells       1.00      0.57      0.73         7
+FCGR3A+ Monocytes       0.96      0.77      0.85        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       1.00      0.87      0.93        31
+
+         accuracy                           0.92       528
+        macro avg       0.95      0.81      0.87       528
+     weighted avg       0.92      0.92      0.91       528
+
+5-fold CV accuracy (HVG): 0.9109 ± 0.0091
+D:\260414_final_571\04_random_forest.py:86: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+
+--- Top 20 genes by RF feature importance (HVG) ---
+   1. NKG7         importance=0.0169
+   2. TYROBP       importance=0.0161
+   3. FCGR3A       importance=0.0145
+   4. CD79A        importance=0.0143
+   5. CCL5         importance=0.0135
+   6. GNLY         importance=0.0133
+   7. FCER1G       importance=0.0127
+   8. HLA-DQA1     importance=0.0124
+   9. CST7         importance=0.0120
+  10. LGALS2       importance=0.0118
+  11. LST1         importance=0.0115
+  12. CST3         importance=0.0112
+  13. S100A8       importance=0.0110
+  14. FGFBP2       importance=0.0109
+  15. HLA-DPA1     importance=0.0106
+  16. CD79B        importance=0.0104
+  17. MS4A1        importance=0.0104
+  18. HLA-DPB1     importance=0.0101
+  19. PRF1         importance=0.0101
+  20. GZMA         importance=0.0099
+D:\260414_final_571\04_random_forest.py:106: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()

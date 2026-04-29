@@ -1,0 +1,252 @@
+============================================================
+SECTION 0: Loading data
+============================================================
+Using label column: 'louvain'
+Dataset shape: (2638, 1838)
+Cell types (8): ['B cells', 'CD14+ Monocytes', 'CD4 T cells', 'CD8 T cells', 'Dendritic cells', 'FCGR3A+ Monocytes', 'Megakaryocytes', 'NK cells']
+Class distribution:
+louvain
+CD4 T cells          1144
+CD14+ Monocytes       480
+B cells               342
+CD8 T cells           316
+NK cells              154
+FCGR3A+ Monocytes     150
+Dendritic cells        37
+Megakaryocytes         15
+
+Train size: 2110, Test size: 528
+
+============================================================
+SECTION 1: Logistic Regression
+============================================================
+
+--- 1a: L2 Logistic Regression (HVG expression) ---
+                   precision    recall  f1-score   support
+
+          B cells       0.99      1.00      0.99        69
+  CD14+ Monocytes       0.93      0.98      0.95        96
+      CD4 T cells       0.94      0.97      0.95       229
+      CD8 T cells       0.84      0.75      0.79        63
+  Dendritic cells       1.00      0.71      0.83         7
+FCGR3A+ Monocytes       0.93      0.87      0.90        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       0.93      0.87      0.90        31
+
+         accuracy                           0.93       528
+        macro avg       0.94      0.85      0.89       528
+     weighted avg       0.93      0.93      0.93       528
+
+--- 1b: L2 Logistic Regression (PCA 50 components) ---
+                   precision    recall  f1-score   support
+
+          B cells       1.00      1.00      1.00        69
+  CD14+ Monocytes       0.98      0.99      0.98        96
+      CD4 T cells       0.96      0.95      0.95       229
+      CD8 T cells       0.79      0.84      0.82        63
+  Dendritic cells       0.88      1.00      0.93         7
+FCGR3A+ Monocytes       0.97      0.97      0.97        30
+   Megakaryocytes       1.00      1.00      1.00         3
+         NK cells       1.00      0.87      0.93        31
+
+         accuracy                           0.95       528
+        macro avg       0.95      0.95      0.95       528
+     weighted avg       0.95      0.95      0.95       528
+
+--- 1c: L1 Logistic Regression (HVG expression) ---
+                   precision    recall  f1-score   support
+
+          B cells       0.99      1.00      0.99        69
+  CD14+ Monocytes       0.94      0.98      0.96        96
+      CD4 T cells       0.95      0.97      0.96       229
+      CD8 T cells       0.86      0.79      0.83        63
+  Dendritic cells       0.83      0.71      0.77         7
+FCGR3A+ Monocytes       0.93      0.90      0.92        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       0.93      0.90      0.92        31
+
+         accuracy                           0.94       528
+        macro avg       0.93      0.87      0.89       528
+     weighted avg       0.94      0.94      0.94       528
+
+Non-zero genes selected by L1: 1838 / 1838
+
+--- Cross-validation (LR L2 HVG) ---
+5-fold CV accuracy: 0.9462 ± 0.0080
+
+--- Top 10 marker genes per cell type (LR L2 coefficients) ---
+  B cells: CD79A, MS4A1, CD79B, HLA-DQB1, HLA-DQA1, HLA-DPB1, TCL1A, HLA-DRB1, LINC00926, HLA-DPA1
+  CD14+ Monocytes: S100A8, LGALS2, MS4A6A, GPX1, FCN1, GSTP1, TYROBP, GRN, FOLR3, NPC2
+  CD4 T cells: LTB, TNFRSF4, IL32, AQP3, MAL, FYB, SRP9, TTN-AS1, PASK, HSP90AA1
+  CD8 T cells: CCL5, GZMK, NKG7, CST7, LYAR, KLRG1, GZMA, CTSW, GZMH, IL32
+  Dendritic cells: FCER1A, CLEC10A, SERPINF1, ENHO, CD1C, HLA-DQA1, GSN, CLEC4C, HLA-DQB1, IL1B
+  FCGR3A+ Monocytes: FCGR3A, IFITM3, IFI30, LST1, C5AR1, FCER1G, ABI3, MAFB, AIF1, C1QA
+  Megakaryocytes: PF4, PPBP, SDPR, CD9, MYL9, PTGS1, TMEM40, FSTL1, GNG11, GP9
+  NK cells: GNLY, GZMB, FGFBP2, XCL2, SPON2, PRF1, CLIC3, IGFBP7, CD247, AKR1C3
+
+============================================================
+SECTION 2: Random Forest
+============================================================
+
+--- 2a: Random Forest (HVG expression) ---
+                   precision    recall  f1-score   support
+
+          B cells       1.00      1.00      1.00        69
+  CD14+ Monocytes       0.89      0.99      0.94        96
+      CD4 T cells       0.91      0.98      0.94       229
+      CD8 T cells       0.84      0.65      0.73        63
+  Dendritic cells       1.00      0.57      0.73         7
+FCGR3A+ Monocytes       0.96      0.77      0.85        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       1.00      0.87      0.93        31
+
+         accuracy                           0.92       528
+        macro avg       0.95      0.81      0.87       528
+     weighted avg       0.92      0.92      0.91       528
+
+
+--- 2b: Random Forest (PCA features) ---
+                   precision    recall  f1-score   support
+
+          B cells       0.99      1.00      0.99        69
+  CD14+ Monocytes       0.94      0.97      0.95        96
+      CD4 T cells       0.95      0.98      0.96       229
+      CD8 T cells       0.91      0.76      0.83        63
+  Dendritic cells       1.00      0.71      0.83         7
+FCGR3A+ Monocytes       0.90      0.90      0.90        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       0.94      0.94      0.94        31
+
+         accuracy                           0.94       528
+        macro avg       0.95      0.87      0.90       528
+     weighted avg       0.94      0.94      0.94       528
+
+
+--- Top 10 genes by RF feature importance (HVG) ---
+   1. NKG7         importance=0.0169
+   2. TYROBP       importance=0.0161
+   3. FCGR3A       importance=0.0145
+   4. CD79A        importance=0.0143
+   5. CCL5         importance=0.0135
+   6. GNLY         importance=0.0133
+   7. FCER1G       importance=0.0127
+   8. HLA-DQA1     importance=0.0124
+   9. CST7         importance=0.0120
+  10. LGALS2       importance=0.0118
+
+============================================================
+SECTION 3: Deep Learning (MLP)
+============================================================
+Device: cpu
+  Epoch   0 | Loss: 1.3883 | Val Acc: 0.1420
+  Epoch  10 | Loss: 0.2185 | Val Acc: 0.4242
+  Epoch  20 | Loss: 0.1310 | Val Acc: 0.5152
+  Epoch  30 | Loss: 0.0861 | Val Acc: 0.5530
+  Epoch  40 | Loss: 0.0616 | Val Acc: 0.5966
+  Epoch  50 | Loss: 0.0463 | Val Acc: 0.7008
+  Epoch  60 | Loss: 0.0342 | Val Acc: 0.7765
+  Epoch  70 | Loss: 0.0296 | Val Acc: 0.8485
+  Epoch  80 | Loss: 0.0239 | Val Acc: 0.9015
+  Epoch  90 | Loss: 0.0186 | Val Acc: 0.9110
+
+                   precision    recall  f1-score   support
+
+          B cells       0.97      1.00      0.99        69
+  CD14+ Monocytes       0.90      0.97      0.93        96
+      CD4 T cells       0.97      0.89      0.93       229
+      CD8 T cells       0.70      0.87      0.77        63
+  Dendritic cells       1.00      0.43      0.60         7
+FCGR3A+ Monocytes       0.74      0.77      0.75        30
+   Megakaryocytes       1.00      0.33      0.50         3
+         NK cells       1.00      0.94      0.97        31
+
+         accuracy                           0.90       528
+        macro avg       0.91      0.77      0.81       528
+     weighted avg       0.91      0.90      0.90       528
+
+Saved: figures/dl_training_curves.png
+
+============================================================
+SECTION 4: Clustering
+============================================================
+
+--- 3a: K-means Clustering ---
+Saved: figures/kmeans_k_selection.png
+K-means (k=8): ARI=0.8977, NMI=0.8838, Silhouette=0.1407
+
+--- 3b: Leiden Clustering ---
+  Leiden res=0.1: 4 clusters, ARI=0.5850, NMI=0.7249
+  Leiden res=0.2: 5 clusters, ARI=0.7020, NMI=0.7997
+  Leiden res=0.3: 5 clusters, ARI=0.8534, NMI=0.8455
+  Leiden res=0.5: 6 clusters, ARI=0.8660, NMI=0.8595
+  Leiden res=0.8: 8 clusters, ARI=0.9402, NMI=0.9141
+  Leiden res=1.0: 8 clusters, ARI=0.9228, NMI=0.8993
+  Leiden res=1.5: 13 clusters, ARI=0.4432, NMI=0.7276
+  Leiden res=2.0: 20 clusters, ARI=0.3523, NMI=0.6613
+
+Best Leiden resolution: 0.8
+  ARI=0.9402, NMI=0.9141, Clusters=8
+
+============================================================
+SECTION 5: Generating Figures
+============================================================
+Saved: figures/all_confusion_matrices.png
+Saved: figures/clustering_heatmaps.png
+Saved: figures/umap_comparison.png
+Saved: figures/supervised_comparison.png
+Saved: figures/clustering_comparison.png
+Saved: figures/leiden_resolution_scan.png
+
+============================================================
+SECTION 6: FINAL SUMMARY
+============================================================
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                     SUPERVISED METHOD RESULTS                          ║
+╠══════════════════════════════════════════════════════════════════════════╣
+             Method Accuracy Macro F1 Weighted F1  Time (s)
+        LR L2 (HVG)   0.9318   0.8900      0.9301      0.14
+        LR L2 (PCA)   0.9470   0.9478      0.9474      0.04
+        LR L1 (HVG)   0.9394   0.8922      0.9383      6.06
+           RF (HVG)   0.9186   0.8652      0.9145      1.69
+           RF (PCA)   0.9432   0.9008      0.9415      0.65
+Deep Learning (MLP)   0.9034   0.8054      0.9038      3.63
+╚══════════════════════════════════════════════════════════════════════════╝
+
+5-fold CV Accuracy (LR L2 HVG): 0.9462 ± 0.0080
+L1 Selected Genes: 1838 / 1838
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                     CLUSTERING METHOD RESULTS                          ║
+╠══════════════════════════════════════════════════════════════════════════╣
+          Method  Clusters    ARI    NMI
+   K-means (k=8)         8 0.8977 0.8838
+Leiden (res=0.8)         8 0.9402 0.9141
+╚══════════════════════════════════════════════════════════════════════════╝
+
+Saved: figures/supervised_results.csv
+Saved: figures/clustering_results.csv
+
+(No figures/transformer_results.csv found — run 05_transformer_based.py to add foundation-model results to the unified comparison.)
+
+============================================================
+ALL DONE! Check the 'figures/' folder for all plots and CSVs.
+============================================================
+
+Generated files:
+  figures/all_confusion_matrices.png  (175.7 KB)
+  figures/clustering_comparison.png  (33.8 KB)
+  figures/clustering_confusion_matrices.png  (110.9 KB)
+  figures/clustering_heatmaps.png  (106.5 KB)
+  figures/clustering_results.csv  (0.6 KB)
+  figures/clustering_umap_comparison.png  (399.7 KB)
+  figures/dl_confusion_matrix.png  (92.5 KB)
+  figures/dl_training_curves.png  (53.2 KB)
+  figures/kmeans_k_selection.png  (98.5 KB)
+  figures/leiden_resolution_scan.png  (55.5 KB)
+  figures/lr_confusion_matrices.png  (104.1 KB)
+  figures/pca_variance_ratio_variance.png  (32.4 KB)
+  figures/supervised_comparison.png  (57.9 KB)
+  figures/supervised_results.csv  (0.7 KB)
+  figures/umap_cell_types.png  (78.6 KB)
+  figures/umap_comparison.png  (399.7 KB)

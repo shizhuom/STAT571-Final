@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\title{Predicting Blood Cell Types from Single-Cell RNA-Seq:\\
+A Comparative Study of Classical and Foundation-Model Approaches}
+\author{STAT 571 --- Modern Data Mining, Final Project}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Keywords:} single-cell RNA-seq; cell-type classification; PBMC 3k; regularized logistic regression; multilayer perceptron; unsupervised clustering; foundation models; scGPT; Geneformer; transfer learning.
+
+\begin{abstract}
+Single-cell RNA sequencing (scRNA-seq) now routinely profiles the transcriptomes of thousands of individual cells, yet assigning a biological identity (``cell type'') to each cell remains a central analytical bottleneck: manual annotation is subjective and laborious, while automated annotation must contend with a high-dimensional feature space, severe class imbalance, and noisy ground-truth labels. This project asks how much of this annotation task can be solved by parsimonious classical models, and whether the marginal gains from deep learning and large pretrained foundation models justify their cost in interpretability and compute. Using the widely studied \textbf{PBMC 3k} dataset (2{,}700 peripheral blood mononuclear cells, 1{,}838 highly variable genes, 8 expert-assigned cell types), we compare four method families on an identical stratified 80/20 train--test split: (i) regularized logistic regression (L1/L2) on both the HVG expression matrix and a 50-component PCA projection, with L1 coefficients doubling as a sparse marker-gene selector; (ii) a multilayer perceptron with BatchNorm, dropout, and imbalance-aware weighted sampling plus weighted cross-entropy; (iii) unsupervised clustering (K-means with elbow/silhouette selection and Leiden across a resolution sweep), scored against the Louvain reference using ARI and NMI; and (iv) zero-shot cell embeddings from the scGPT and Geneformer foundation models (pretrained on $\sim$30M cells) fed into the same downstream classifiers, isolating the contribution of large-scale self-supervised pretraining. All methods are evaluated on accuracy, macro-F1, per-class performance, and confusion-matrix structure, with five-fold cross-validation assessing stability. The hoped-for contribution is a transparent, reproducible benchmark that quantifies when sophisticated models genuinely help for small, well-characterized scRNA-seq datasets and when a carefully tuned linear baseline is already sufficient --- a methodological takeaway of practical value to biologists annotating new cytometry-scale cohorts.
+\end{abstract}
+
+\end{document}

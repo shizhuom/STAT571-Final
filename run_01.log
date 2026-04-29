@@ -1,0 +1,46 @@
+Features (expression): (2638, 1838)
+Features (PCA): (2638, 50)
+Cell types (8): ['B cells', 'CD14+ Monocytes', 'CD4 T cells', 'CD8 T cells', 'Dendritic cells', 'FCGR3A+ Monocytes', 'Megakaryocytes', 'NK cells']
+
+==================================================
+Logistic Regression (HVG expression): 0.9318
+Logistic Regression (PCA 50 components): 0.9470
+==================================================
+
+--- Classification Report (HVG expression) ---
+                   precision    recall  f1-score   support
+
+          B cells       0.99      1.00      0.99        69
+  CD14+ Monocytes       0.93      0.98      0.95        96
+      CD4 T cells       0.94      0.97      0.95       229
+      CD8 T cells       0.84      0.75      0.79        63
+  Dendritic cells       1.00      0.71      0.83         7
+FCGR3A+ Monocytes       0.93      0.87      0.90        30
+   Megakaryocytes       1.00      0.67      0.80         3
+         NK cells       0.93      0.87      0.90        31
+
+         accuracy                           0.93       528
+        macro avg       0.94      0.85      0.89       528
+     weighted avg       0.93      0.93      0.93       528
+
+5-fold CV accuracy: 0.9462 ± 0.0080
+D:\260414_final_571\01_logistic_regression.py:93: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+
+--- Top 10 marker genes per cell type (by LR coefficient) ---
+B cells: CD79A, MS4A1, CD79B, HLA-DQB1, HLA-DQA1, HLA-DPB1, TCL1A, HLA-DRB1, LINC00926, HLA-DPA1
+CD14+ Monocytes: S100A8, LGALS2, MS4A6A, GPX1, FCN1, GSTP1, TYROBP, GRN, FOLR3, NPC2
+CD4 T cells: LTB, TNFRSF4, IL32, AQP3, MAL, FYB, SRP9, TTN-AS1, PASK, HSP90AA1
+CD8 T cells: CCL5, GZMK, NKG7, CST7, LYAR, KLRG1, GZMA, CTSW, GZMH, IL32
+Dendritic cells: FCER1A, CLEC10A, SERPINF1, ENHO, CD1C, HLA-DQA1, GSN, CLEC4C, HLA-DQB1, IL1B
+FCGR3A+ Monocytes: FCGR3A, IFITM3, IFI30, LST1, C5AR1, FCER1G, ABI3, MAFB, AIF1, C1QA
+Megakaryocytes: PF4, PPBP, SDPR, CD9, MYL9, PTGS1, TMEM40, FSTL1, GNG11, GP9
+NK cells: GNLY, GZMB, FGFBP2, XCL2, SPON2, PRF1, CLIC3, IGFBP7, CD247, AKR1C3
+C:\Users\shizh\.conda\envs\scrna\lib\site-packages\sklearn\linear_model\_logistic.py:1221: UserWarning: l1_ratio parameter is only used when penalty is 'elasticnet'. Got (penalty=l2)
+  warnings.warn(
+
+L1 Logistic Regression accuracy: 0.9432
+Non-zero genes selected by L1: 1838 / 1838
+C:\Users\shizh\.conda\envs\scrna\lib\site-packages\sklearn\linear_model\_logistic.py:1221: UserWarning: l1_ratio parameter is only used when penalty is 'elasticnet'. Got (penalty=l2)
+  warnings.warn(
+L1 Logistic Regression (PCA) accuracy: 0.9470
